@@ -1,0 +1,48 @@
+views 폴더 안의 컴포넌트는 페이지의 라우팅에 관한 정보들만
+들어가는 것이 구조 팁
+로직들은 별도의 컴포넌트로 등록
+
+// NewsView.vue
+<template>
+  <div v-for="user in users"> 
+  {{ user }}
+  </div>
+</template>
+
+<script>
+import axios from 'axios';
+
+export default {
+    data () {
+        return {
+            users: []
+        }
+    },
+    created() {
+        axios.get('/users')
+            .then(response => this.user = response.data)
+            .catch()
+    }
+}
+</script>
+
+<style>
+
+</style>
+
+// 위보단 아래처럼
+<template>
+  <div>
+      news
+  </div>
+</template>
+
+<script>
+
+export default {
+}
+</script>
+
+<style>
+
+</style>
